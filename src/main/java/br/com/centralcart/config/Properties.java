@@ -17,22 +17,20 @@ public class Properties {
   public static void setup(BungeePlugin plugin) {
     propertiesFile = new File(plugin.getDataFolder(), fileName);
 
-    // Cria o arquivo se não existir
     if (!propertiesFile.exists()) {
       try {
-        plugin.getDataFolder().mkdirs(); // Garante que a pasta do plugin exista
+        plugin.getDataFolder().mkdirs();
         propertiesFile.createNewFile();
         Logger.info("Created new configuration file: " + propertiesFile.getPath());
 
-        // Inicializa a configuração padrão
         fileConfiguration = new Configuration();
         fileConfiguration.set("secret", "token-da-sua-loja");
-        save(); // Salva a configuração inicial
+        save();
       } catch (IOException e) {
         Logger.error("Could not create " + fileName + ": " + e.getMessage());
       }
     } else {
-      load(); // Carrega a configuração existente
+      load();
     }
   }
 
@@ -43,16 +41,14 @@ public class Properties {
         return;
       }
 
-      // Carrega a configuração do arquivo
       fileConfiguration = ConfigurationProvider.getProvider(YamlConfiguration.class)
               .load(propertiesFile);
 
-      // Verifica se a configuração foi carregada com sucesso
       if (fileConfiguration == null) {
         Logger.error("Failed to load the configuration file.");
       } else {
         Logger.info("Configuration file loaded successfully.");
-        Logger.info("Secret: " + fileConfiguration.getString("secret")); // Mostra o valor carregado para verificação
+        Logger.info("Secret: " + fileConfiguration.getString("secret"));
       }
     } catch (IOException e) {
       Logger.error("Could not load " + fileName + ": " + e.getMessage());
