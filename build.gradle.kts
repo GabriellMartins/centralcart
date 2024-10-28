@@ -20,6 +20,9 @@ dependencies {
     implementation("org.bstats:bstats-bungeecord:3.0.2")
     compileOnly("net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT")
     compileOnly(files("../libraries/Travertine.jar"))
+    implementation("org.bstats:bstats-bukkit:3.0.2")
+    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+    compileOnly(files("../libraries/carbonspigot.jar"))
 }
 
 tasks.withType<JavaCompile> {

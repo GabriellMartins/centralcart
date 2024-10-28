@@ -1,11 +1,11 @@
 package br.com.centralcart.updater;
 
-import br.com.centralcart.BungeePlugin;
 import br.com.centralcart.utils.Logger;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,12 +19,12 @@ public class Updater {
   private final String META_URL = "https://cdn.centralcart.com.br/plugins/minecraft/meta.json";
   private final String PLUGIN_URL = "https://cdn.centralcart.com.br/plugins/minecraft/CentralCart.jar";
 
-  private final BungeePlugin plugin;
+  private final JavaPlugin plugin;
   private final File savePath;
 
   OkHttpClient client = new OkHttpClient();
 
-  public Updater(BungeePlugin plugin) {
+  public Updater(JavaPlugin plugin) {
     this.plugin = plugin;
     this.savePath = new File(plugin.getDataFolder().getParentFile(), "CentralCart.jar");
   }
@@ -37,17 +37,17 @@ public class Updater {
     String currentVersion = null;
     try (okhttp3.Response response = client.newCall(request).execute()) {
       assert response.body() != null;
-      JsonElement plugin = new JsonParser().parse(response.body().string()).getAsJsonArray().get(0);
-      String version = plugin.getAsJsonObject().get("version").getAsString();
-      String build = plugin.getAsJsonObject().get("build").getAsString();
+      JsonElement pluginData = JsonParser.parseString(response.body().string()).getAsJsonArray().get(0);
+      String version = pluginData.getAsJsonObject().get("version").getAsString();
+      String build = pluginData.getAsJsonObject().get("build").getAsString();
 
       currentVersion = version + "-" + build;
     } catch (IOException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
 
     if (!plugin.getDescription().getVersion().equals(currentVersion)) {
-      //System.out.println(plugin.getDescription().getVersion() + " compare " + currentVersion);
+      Logger.info("A new version is available: " + currentVersion);
       download(PLUGIN_URL);
     }
   }
@@ -58,7 +58,6 @@ public class Updater {
       URL url = new URL(pluginUrl);
 
       URLConnection connection = url.openConnection();
-
       int fileSize = connection.getContentLength();
 
       try (InputStream in = connection.getInputStream();
@@ -71,12 +70,11 @@ public class Updater {
         while ((bytesRead = in.read(buffer)) != -1) {
           out.write(buffer, 0, bytesRead);
           totalBytesRead += bytesRead;
-          //System.out.println("Baixando... " + totalBytesRead + " de " + fileSize + " bytes");
         }
       }
-      //System.out.println("Download completo!");
+      Logger.info("Download completed successfully!");
     } catch (IOException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
   }
 }

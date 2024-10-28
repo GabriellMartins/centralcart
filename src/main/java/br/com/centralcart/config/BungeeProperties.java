@@ -2,6 +2,7 @@ package br.com.centralcart.config;
 
 import br.com.centralcart.BungeePlugin;
 import br.com.centralcart.utils.Logger;
+
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
@@ -17,6 +18,7 @@ public class BungeeProperties {
   private static final String fileName = "properties.yml";
 
   public static void setup(BungeePlugin plugin) {
+    
     if (!plugin.getDataFolder().exists())
       plugin.getDataFolder().mkdirs();
 
@@ -41,7 +43,6 @@ public class BungeeProperties {
         throw new RuntimeException(e);
       }
     }
-
 
   }
 

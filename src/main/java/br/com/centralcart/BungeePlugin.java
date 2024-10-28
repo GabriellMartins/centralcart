@@ -30,7 +30,7 @@ public class BungeePlugin extends Plugin {
 
   @Override
   public void onEnable() {
-    Properties.setup(this);
+    BungeeProperties.setup(this);
 
     instance = this;
 
