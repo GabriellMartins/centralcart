@@ -1,27 +1,31 @@
-# CENTRAL CART
+CENTRAL CART
+Description
+This is a custom monetization plugin developed for Minecraft servers running on BungeeCord, Travertine, and Zartema platforms. Designed to operate independently, the plugin has no Bukkit dependencies, ensuring full compatibility with proxy-based server networks.
 
-# Descrição
-Este é um plugin de monetização customizado, desenvolvido para servidores Minecraft que utilizam as plataformas BungeeCord, Travertine e Zartema. Criado para operar de forma independente, o plugin não possui dependências no Bukkit, garantindo compatibilidade total com redes de servidores em proxy.
+Features
+✅ Compatible with BungeeCord, Travertine, and Zartema
+The plugin is tailored for proxy environments, ensuring top performance and seamless functionality.
 
-# Características
-Compatível com BungeeCord, Travertine e Zartema
-O plugin é adaptado para ambientes de proxy, garantindo desempenho e funcionalidade.
+✅ Independent from Bukkit
+No Bukkit dependency required, allowing for a lightweight experience and easier installation.
 
-# Independente de Bukkit
-Nenhuma dependência do Bukkit é necessária, o que permite uma instalação mais fácil e uma experiência mais leve para o servidor.
+Requirements
+A proxy server running BungeeCord, Travertine, or Zartema
 
-# Requisitos
-Servidor proxy rodando BungeeCord, Travertine ou Zartema.
-Java 8 ou superior.
-# Instalação
-Baixe o arquivo .jar do plugin.
-Coloque o arquivo .jar na pasta plugins do seu servidor proxy.
-Reinicie o servidor para que o plugin seja carregado.
-# Configuração
-Após a instalação, um arquivo de configuração será gerado automaticamente na pasta plugins/MonetizationPlugin. Edite esse arquivo para personalizar as opções de monetização de acordo com as necessidades do seu servidor.
+Java 8 or higher
 
-# Uso
-O plugin fornece comandos e permissões que podem ser configurados para oferecer diferentes funcionalidades de monetização aos jogadores.
+Installation
+Download the plugin .jar file
 
-# Suporte
-Para dúvidas e suporte técnico, entre em contato com o desenvolvedor ou visite o fórum de suporte na comunidade do servidor.
+Place the .jar file inside the plugins folder of your proxy server
+
+Restart the server to load the plugin
+
+Configuration
+After installation, a configuration file will be automatically generated in the plugins/MonetizationPlugin folder. Edit this file to customize monetization options according to your server’s needs.
+
+Usage
+The plugin provides commands and permissions that can be configured to offer different monetization features to players.
+
+Support
+For questions or technical support, contact the developer or visit the support forum within your server's community.
